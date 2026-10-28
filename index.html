@@ -92,6 +92,7 @@ section { margin-bottom: 2rem; }
 .cal .d { font-weight: 600; }
 .cal .t { font-weight: 700; color: var(--navy); }
 .cal .src { color: var(--muted); font-size: .85rem; }
+.tape .sym a, .items a, .cal .src a, footer a { display: inline-flex; align-items: center; min-height: 44px; }
 
 /* Changelog */
 .log { list-style: none; margin: 0; padding: 0; }
@@ -180,94 +181,122 @@ const WATCHLIST = {
 };
 
 const BRIEF = {
-  mode: "sample",
-  asOf: "2026-10-16",
-  retrievedAt: "2026-10-16T16:30:00-04:00",
-  priceType: "close",
+  mode: "live",
+  asOf: "2026-10-28",
+  retrievedAt: "2026-10-28T11:24:00-04:00",
+  priceType: "intraday",
   companies: {
-    NVDA: {
+    AAPL: {
       closes: [
-        { date: "2026-10-12", close: 100.00 },
-        { date: "2026-10-13", close: 101.40 },
-        { date: "2026-10-14", close: 99.80 },
-        { date: "2026-10-15", close: 103.10 },
-        { date: "2026-10-16", close: 104.20 }
+        { date: "2026-10-21", close: 343.99 },
+        { date: "2026-10-22", close: 348.22 },
+        { date: "2026-10-23", close: 347.73 },
+        { date: "2026-10-26", close: 343.91 },
+        { date: "2026-10-27", close: 347.10 }
       ],
-      latest: null,
-      priceSource: "https://example.com/sample",
+      latest: { date: "2026-10-28", time: "11:24 AM", price: 345.40 },
+      priceSource: "https://stockanalysis.com/stocks/aapl/history/",
       news: [
-        { date: "2026-10-15", headline: "Sample headline. Run the refresh-brief agent to replace this.", source: "Sample", url: "https://example.com/sample", why: "Sample. The agent writes one plain sentence here on why the item matters to the stock." }
+        { date: "2026-10-27", headline: "Apple unveils new iMac with M6, delivering a major boost in performance and AI capabilities", source: "Apple Newsroom", url: "https://www.apple.com/newsroom/2026/10/apple-unveils-new-imac-with-m6/", why: "Pre-orders for the new iMac open October 28, with availability on November 6." },
+        { date: "2026-10-27", headline: "Apple Announces New 14-Inch MacBook Pro With M6 Chip", source: "MacRumors", url: "https://www.macrumors.com/2026/10/27/14-inch-macbook-pro-with-m6-chip/", why: "Apple refreshed the low-end 14-inch MacBook Pro with the M6 chip, starting at $1,999." }
       ],
       upcoming: [
-        { date: "2026-10-28", event: "Sample event (replace by refreshing)", source: "Sample", url: "https://example.com/sample" }
+        { date: "2026-11-02", event: "Fiscal Q4 2026 earnings, call at 5:00 PM ET (date per MacTrast; not yet listed on Apple's IR page)", source: "MacTrast", url: "https://www.mactrast.com/2026/10/apple-to-announce-fiscal-q4-2026-earnings-on-november-2/" },
+        { date: "2026-11-06", event: "M6 iMac arrives to customers and in stores (pre-orders open Oct 28)", source: "Apple Newsroom", url: "https://www.apple.com/newsroom/2026/10/apple-unveils-new-imac-with-m6/" }
       ]
     },
-    JPM: {
+    COST: {
       closes: [
-        { date: "2026-10-12", close: 100.00 },
-        { date: "2026-10-13", close: 99.30 },
-        { date: "2026-10-14", close: 98.90 },
-        { date: "2026-10-15", close: 98.20 },
-        { date: "2026-10-16", close: 97.60 }
+        { date: "2026-10-21", close: 998.31 },
+        { date: "2026-10-22", close: 1018.21 },
+        { date: "2026-10-23", close: 1003.32 },
+        { date: "2026-10-26", close: 1005.16 },
+        { date: "2026-10-27", close: 992.13 }
       ],
-      latest: null,
-      priceSource: "https://example.com/sample",
+      latest: { date: "2026-10-28", time: "11:23 AM", price: 984.00 },
+      priceSource: "https://stockanalysis.com/stocks/cost/history/",
       news: [
-        { date: "2026-10-14", headline: "Sample headline. Run the refresh-brief agent to replace this.", source: "Sample", url: "https://example.com/sample", why: "Sample." }
+        { date: "2026-10-27", headline: "Costco Remains a Defensive Compounder Awaiting Its Next Leg Up", source: "24/7 Wall St. via Yahoo Finance", url: "https://finance.yahoo.com/markets/stocks/articles/costco-remains-defensive-compounder-awaiting-124541831.html", why: "Rates the stock a Hold, arguing the business is strong but a roughly 48x trailing P/E leaves little room for error." }
       ],
-      upcoming: []
-    },
-    ACN: {
-      closes: [
-        { date: "2026-10-12", close: 100.00 },
-        { date: "2026-10-13", close: 100.20 },
-        { date: "2026-10-14", close: 99.90 },
-        { date: "2026-10-15", close: 100.10 },
-        { date: "2026-10-16", close: 100.05 }
-      ],
-      latest: null,
-      priceSource: "https://example.com/sample",
-      news: [],
       upcoming: [
-        { date: "2026-10-22", event: "Sample event (replace by refreshing)", source: "Sample", url: "https://example.com/sample" }
+        { date: "2026-10-30", event: "Dividend record date, $1.47 per share (payable Nov 13)", source: "Costco 8-K exhibit (SEC)", url: "https://www.sec.gov/Archives/edgar/data/0000909832/000090983226000096/costex9918-k101426.htm" },
+        { date: "2026-11-04", event: "October sales results (expected, from a third-party calendar; not confirmed by Costco)", source: "Catacal", url: "https://www.catacal.com/catalyst/costco-october-sales-report" }
       ]
     },
-    DE: {
+    GS: {
       closes: [
-        { date: "2026-10-12", close: 100.00 },
-        { date: "2026-10-13", close: 102.50 },
-        { date: "2026-10-14", close: 101.80 },
-        { date: "2026-10-15", close: 103.90 },
-        { date: "2026-10-16", close: 102.70 }
+        { date: "2026-10-21", close: 904.72 },
+        { date: "2026-10-22", close: 891.30 },
+        { date: "2026-10-23", close: 875.68 },
+        { date: "2026-10-26", close: 893.28 },
+        { date: "2026-10-27", close: 911.77 }
       ],
-      latest: null,
-      priceSource: "https://example.com/sample",
+      latest: { date: "2026-10-28", time: "11:24 AM", price: 921.68 },
+      priceSource: "https://stockanalysis.com/stocks/gs/history/",
       news: [
-        { date: "2026-10-13", headline: "Sample headline. Run the refresh-brief agent to replace this.", source: "Sample", url: "https://example.com/sample", why: "Sample." }
-      ],
-      upcoming: []
-    },
-    LLY: {
-      closes: [
-        { date: "2026-10-12", close: 100.00 },
-        { date: "2026-10-13", close: 98.70 },
-        { date: "2026-10-14", close: 99.60 },
-        { date: "2026-10-15", close: 101.30 },
-        { date: "2026-10-16", close: 102.90 }
-      ],
-      latest: null,
-      priceSource: "https://example.com/sample",
-      news: [
-        { date: "2026-10-16", headline: "Sample headline. Run the refresh-brief agent to replace this.", source: "Sample", url: "https://example.com/sample", why: "Sample." }
+        { date: "2026-10-23", headline: "Goldman Sachs CEO David Solomon on AI's economic impact: 'There's very little that we do where we need frontier models'", source: "Fortune", url: "https://fortune.com/2026/10/23/david-solomon-frontier-models-not-needed-small-business/", why: "Solomon said most everyday business activity, especially for small businesses, does not need frontier AI models; Goldman is putting $500 million into the next phase of its 10,000 Small Businesses program." },
+        { date: "2026-10-27", headline: "The Goldman Sachs Group (NYSE:GS) CEO David Solomon Sells 12,000 Shares of Stock", source: "MarketBeat", url: "https://www.marketbeat.com/instant-alerts/insider-the-goldman-sachs-group-nyse-gs-ceo-david-solomon-sells-12000-shares-of-stock-2026-10-27/", why: "An insider sale by the CEO, which some investors watch as a sentiment signal; the article does not say whether it was a pre-planned sale." }
       ],
       upcoming: [
-        { date: "2026-10-30", event: "Sample event (replace by refreshing)", source: "Sample", url: "https://example.com/sample" }
+        { date: "2026-10-28", event: "Market-wide: FOMC rate decision (Oct 27 to 28 meeting), which matters for bank margins and deal activity", source: "Federal Reserve", url: "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" }
+      ]
+    },
+    CAT: {
+      closes: [
+        { date: "2026-10-21", close: 740.21 },
+        { date: "2026-10-22", close: 704.05 },
+        { date: "2026-10-23", close: 687.00 },
+        { date: "2026-10-26", close: 692.13 },
+        { date: "2026-10-27", close: 713.31 }
+      ],
+      latest: { date: "2026-10-28", time: "11:24 AM", price: 713.49 },
+      priceSource: "https://stockanalysis.com/stocks/cat/history/",
+      news: [
+        { date: "2026-10-26", headline: "UBS cuts Caterpillar stock price target on valuation concerns", source: "Investing.com", url: "https://www.investing.com/news/analyst-ratings/ubs-cuts-caterpillar-stock-price-target-on-valuation-concerns-93CH-4971903", why: "UBS cut its target to $750 from $825 and kept Neutral, saying the bar for upside is high going into earnings." },
+        { date: "2026-10-27", headline: "Caterpillar (NYSE:CAT) Stock Price Up 3.2% - Here's Why", source: "MarketBeat", url: "https://www.marketbeat.com/instant-alerts/price-caterpillar-nyse-cat-stock-price-up-32-heres-why-2026-10-27/", why: "Shares bounced two days before results; the piece also notes a $1.63 dividend and a planned $1 billion North Carolina plant expansion." }
+      ],
+      upcoming: [
+        { date: "2026-10-29", event: "Q3 2026 results at 5:30 AM CDT, call at 7:30 AM CDT", source: "PR Newswire via Finviz", url: "https://finviz.com/news/402910/caterpillar-inc-to-announce-third-quarter-2026-financial-results-on-october-29" }
+      ]
+    },
+    PFE: {
+      closes: [
+        { date: "2026-10-21", close: 29.85 },
+        { date: "2026-10-22", close: 30.42 },
+        { date: "2026-10-23", close: 30.03 },
+        { date: "2026-10-26", close: 29.79 },
+        { date: "2026-10-27", close: 29.80 }
+      ],
+      latest: { date: "2026-10-28", time: "11:24 AM", price: 29.59 },
+      priceSource: "https://stockanalysis.com/stocks/pfe/history/",
+      news: [
+        { date: "2026-10-26", headline: "Pfizer's TALZENNA Plus XTANDI FDA-Approved for an Earlier Metastatic Prostate Cancer Treatment Setting", source: "Business Wire via FinancialContent", url: "https://www.financialcontent.com/article/bizwire-2026-10-26-pfizers-talzenna-plus-xtandi-fda-approved-for-an-earlier-metastatic-prostate-cancer-treatment-setting", why: "Moving the combination to an earlier stage of prostate cancer widens the group of patients who can be treated with it." },
+        { date: "2026-10-27", headline: "Pfizer shares may move 3.8% on Nov. 3 earnings release", source: "Investing.com", url: "https://www.investing.com/news/stock-market-news/pfizer-shares-may-move-38-on-nov-3-earnings-release-93CH-4976046", why: "Options pricing suggests a modest move on next week's results." }
+      ],
+      upcoming: [
+        { date: "2026-11-03", event: "Q3 2026 earnings, before the market opens (Pfizer IR page returned 403, so date taken from Investing.com)", source: "Investing.com", url: "https://www.investing.com/news/stock-market-news/pfizer-shares-may-move-38-on-nov-3-earnings-release-93CH-4976046" },
+        { date: "2026-11-06", event: "Dividend record date, $0.43 per share (payable Dec 7)", source: "Pfizer release via BioSpace", url: "https://www.biospace.com/press-releases/pfizer-declares-fourth-quarter-2026-dividend" }
       ]
     }
   }
 };
 
 const CHANGELOG = [
+  {
+    date: "2026-10-28",
+    summary: [
+      "AAPL 343.99 to 345.40 on the M6 iMac and 14-inch MacBook Pro launch",
+      "COST 998.31 to 984.00, no major company news (analyst Hold piece only)",
+      "GS 904.72 to 921.68; Goldman is putting $500M into its 10,000 Small Businesses program; CEO sold 12,000 shares Oct 27",
+      "CAT 740.21 to 713.49 after a UBS target cut ahead of Oct 29 earnings",
+      "PFE 29.85 to 29.59 despite FDA expanded approval for TALZENNA plus XTANDI",
+      "First price is the Oct 21 close; last price is intraday at about 11:24 AM ET on Oct 28 (market open).",
+      "Calendar added: CAT earnings Oct 29, COST dividend record date Oct 30, AAPL earnings Nov 2, PFE earnings Nov 3, COST October sales Nov 4 (expected), AAPL iMac availability Nov 6, PFE dividend record date Nov 6, FOMC decision Oct 28 (filed under GS).",
+      "Sample tickers NVDA, JPM, ACN, DE, LLY removed; they are not in WATCHLIST.",
+      "Missing: Apple, Pfizer, Goldman, and Costco IR pages did not load (access denied, not found, or empty), so AAPL and PFE earnings dates come from secondary sources. No GS earnings or dividend date falls in the window (next ex-dividend Dec 2)."
+    ],
+    note: "Prices were read off stockanalysis.com by a summarizing fetch tool; spot-check the closes. AAPL Nov 2 and PFE Nov 3 earnings dates are not confirmed on company IR pages. COST Nov 4 October sales date is from a third-party calendar and is expected, not confirmed. Weekly percentages are left to the page per CLAUDE.md rule 6."
+  },
   {
     date: "2026-10-16",
     summary: [
